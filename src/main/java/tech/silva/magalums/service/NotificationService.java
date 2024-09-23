@@ -2,7 +2,10 @@ package tech.silva.magalums.service;
 
 import org.springframework.stereotype.Service;
 import tech.silva.magalums.dto.ScheduleNotificationDto;
+import tech.silva.magalums.entity.Notification;
 import tech.silva.magalums.repository.NotificationRepository;
+
+import java.util.Optional;
 
 @Service
 public class NotificationService {
@@ -15,5 +18,9 @@ public class NotificationService {
 
     public void scheduleNotification(ScheduleNotificationDto dto){
         notificationRepository.save(dto.toNotification());
+    }
+
+    public Optional<Notification> findById(Long notificationId){
+        return notificationRepository.findById(notificationId);
     }
 }
